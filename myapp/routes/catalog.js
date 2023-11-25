@@ -6,6 +6,7 @@ var book_controller = require('../controllers/bookController');
 var author_controller = require('../controllers/authorController');
 var genre_controller = require('../controllers/genreController');
 var book_instance_controller = require('../controllers/bookinstanceController');
+var comment_controller = require('../controllers/commentController');
 
 /// BOOK ROUTES ///
 
@@ -113,5 +114,35 @@ router.get('/bookinstance/:id', book_instance_controller.bookinstance_detail);
 
 // GET request for list of all BookInstance.
 router.get('/bookinstances', book_instance_controller.bookinstance_list);
+
+
+/// COMMENT ROUTES ///
+
+// GET catalog home page.
+router.get('/', comment_controller.index);
+
+// GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
+router.get('/comment/create', comment_controller.comment_create_get);
+
+// POST request for creating Book.
+router.post('/comment/create', comment_controller.comment_create_post);
+
+// GET request to delete Book.
+router.get('/comment/:id/delete', comment_controller.comment_delete_get);
+
+// POST request to delete Book.
+router.post('/comment/:id/delete', comment_controller.comment_delete_post);
+
+// GET request to update Book.
+router.get('/comment/:id/update', comment_controller.comment_update_get);
+
+// POST request to update Book.
+router.post('/comment/:id/update', comment_controller.comment_update_post);
+
+// GET request for one Book.
+router.get('/comment/:id', comment_controller.comment_detail);
+
+// GET request for list of all Book items.
+router.get('/comments', comment_controller.comment_list);
 
 module.exports = router;

@@ -1,0 +1,55 @@
+.author-info {
+  padding: 16px;
+  background: #fff;
+}
+
+.author-info .info {
+  display: flex;
+  align-items: center;
+}
+
+.author-info .info img {
+  width: 150px;
+  height: 150px;
+  margin: 0 16px 0 0;
+}
+
+.author-info .info h1 {
+  margin: 0 0 8px;
+}
+
+.author-info .info .desc {
+  color: #ccc;
+}
+
+.author-info .lyric {
+  margin: 16px 0 0;
+}
+
+.author-info .lyric .book-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book {
+  margin: 0 16px 16px 0;
+  cursor: pointer;
+}
+
+.book img {
+  width: 150px;
+  height: 150px;
+}
+
+.book .name {
+  font-size: 16px;
+}
+
+.book .author {
+  color: #ccc;
+  font-size: 12px;
+}
+
+.book p {
+  margin: 8px 0 0;
+}

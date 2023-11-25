@@ -1,0 +1,65 @@
+.book-info {
+  padding: 16px;
+  background: #fff;
+}
+
+.book-info .info {
+  display: flex;
+  align-items: center;
+}
+
+.book-info .info img {
+  width: 150px;
+  height: 150px;
+  margin: 0 16px 0 0;
+}
+
+.book-info .info h1 {
+  margin: 0 0 8px;
+}
+
+.book-info .info .desc {
+  color: #ccc;
+  margin: 8px 0 0;
+}
+
+.book-info .lyric {
+  white-space: pre-wrap;
+  margin: 16px 0 0;
+  line-height: 1.5;
+}
+
+.book-info .comment-list {
+  margin: 16px 0 0;
+}
+
+.book-info .comment-list .comment-input {
+  display: flex;
+}
+
+.book-info .comment-list .comment-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.book-info .comment-list .comment-item .name {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.book-info .comment-list .comment-item .name img {
+  width: 40px;
+  height: 40px;
+  margin: 0 8px 0 0;
+  border-radius: 50%;
+}
+
+.book-info .comment-list .comment-item .content {
+  margin: 8px 0;
+}
+
+.book-info .comment-list .comment-item .time {
+  color: #ccc;
+  font-size: 12px;
+}

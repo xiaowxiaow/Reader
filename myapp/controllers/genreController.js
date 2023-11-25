@@ -1,45 +1,70 @@
-var Book = require('../models/book');
+var Genre = require('../models/genre');
 
-exports.index = function(req, res) {
+exports.index = function (req, res) {
     res.send('NOT IMPLEMENTED: Site Home Page');
 };
 
-// Display list of all books.
-exports.book_list = function(req, res) {
-    res.send('NOT IMPLEMENTED: Book list');
+// Display list of all genres.
+exports.genre_list = function (req, res) {
+    Genre.find({})
+        .then(values => {
+            res.send(values);
+        })
+        .catch(err => {
+            console.error(err);
+        });
 };
 
-// Display detail page for a specific book.
-exports.book_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: Book detail: ' + req.params.id);
+// Display detail page for a specific genre.
+exports.genre_detail = function (req, res) {
+    res.send('NOT IMPLEMENTED: Genre detail: ' + req.params.id);
 };
 
-// Display book create form on GET.
-exports.book_create_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Book create GET');
+// Display genre create form on GET.
+exports.genre_create_get = function (req, res) {
+    res.send('NOT IMPLEMENTED: Genre create GET');
 };
 
-// Handle book create on POST.
-exports.book_create_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Book create POST');
+// Handle genre create on POST.
+exports.genre_create_post = function (req, res) {
+    // res.send('NOT IMPLEMENTED: Genre create POST');
+    Genre.create({
+        name: req.body.name,
+    }).then(() => {
+        res.send(true);
+    }).catch(err => {
+        console.error(err);
+    });
 };
 
-// Display book delete form on GET.
-exports.book_delete_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Book delete GET');
+// Display genre delete form on GET.
+exports.genre_delete_get = function (req, res) {
+    Genre.findByIdAndDelete(req.params.id)
+        .then(() => {
+            res.send(true);
+        })
+        .catch(err => {
+            console.error(err);
+        });
 };
 
-// Handle book delete on POST.
-exports.book_delete_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Book delete POST');
+// Handle genre delete on POST.
+exports.genre_delete_post = function (req, res) {
+    Genre.findByIdAndDelete(req.params.id)
+        .then(() => {
+            res.send(true);
+        })
+        .catch(err => {
+            console.error(err);
+        });
 };
 
-// Display book update form on GET.
-exports.book_update_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Book update GET');
+// Display genre update form on GET.
+exports.genre_update_get = function (req, res) {
+    res.send('NOT IMPLEMENTED: Genre update GET');
 };
 
-// Handle book update on POST.
-exports.book_update_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Book update POST');
+// Handle genre update on POST.
+exports.genre_update_post = function (req, res) {
+    res.send('NOT IMPLEMENTED: Genre update POST');
 };

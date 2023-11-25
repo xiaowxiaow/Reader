@@ -12,13 +12,14 @@ services:
     - type: bind
       source: /var/run/docker.sock
       target: /var/run/docker.sock
-    # build:
-    #  context: myapp
+    - ./:/home
     restart: always
     
     container_name: server4
     ports:
     - 3000:3000
+    - 3001:3001
+    - 3002:3002
     environment:
       MONGODB_CONNSTRING: mongodb://root:example@mongodb:27017
     depends_on:

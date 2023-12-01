@@ -2,6 +2,7 @@ import React from 'react';
 import './login.css'
 import { Button, Form, Input } from 'antd';
 import axios from 'axios'
+import { host } from '../../constant'
 
 interface DataType {
   _id: string;
@@ -13,7 +14,7 @@ interface DataType {
 }
 
 const onFinish = (values: any) => {
-  axios.post('http://localhost:3001/users/login', values)
+  axios.post(host + '/users/login', values)
     .then(({ data }: { data: DataType }) => {
       window.localStorage.setItem('userInfo', JSON.stringify(data))
       window.location.reload()

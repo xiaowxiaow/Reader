@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Space, Table, Modal, Form, Input, Select } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import axios from 'axios';
+import { host } from '../../constant'
 
 interface DataType {
   _id: string;
@@ -81,7 +82,7 @@ const UserManage: React.FC = () => {
   }, [])
 
   const fetchDataList = () => {
-    axios.get('http://localhost:3001/catalog/books')
+    axios.get(host + '/catalog/books')
       .then(res => {
         setData(res.data)
       })
@@ -91,7 +92,7 @@ const UserManage: React.FC = () => {
   }
 
   const fetchAuthors = () => {
-    axios.get('http://localhost:3001/catalog/authors')
+    axios.get(host + '/catalog/authors')
       .then(res => {
         setAuthors(res.data)
       })
@@ -101,7 +102,7 @@ const UserManage: React.FC = () => {
   }
 
   const fetchGenres = () => {
-    axios.get('http://localhost:3001/catalog/genres')
+    axios.get(host + '/catalog/genres')
       .then(res => {
         setGenres(res.data)
       })
@@ -121,7 +122,7 @@ const UserManage: React.FC = () => {
   };
 
   const onFinish = (values: any) => {
-    axios.post('http://localhost:3001/catalog/book/create', values)
+    axios.post(host + '/catalog/book/create', values)
       .then(res => {
         setOpen(false);
         fetchDataList();
@@ -132,7 +133,7 @@ const UserManage: React.FC = () => {
   };
 
   const handleDelete = (id: string) => {
-    axios.get('http://localhost:3001/catalog/book/' + id + '/delete')
+    axios.get(host + '/catalog/book/' + id + '/delete')
       .then(res => {
         fetchDataList();
       })

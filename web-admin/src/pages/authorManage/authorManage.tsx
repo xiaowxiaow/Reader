@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Space, Table, Modal, Form, Input, DatePicker } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import axios from 'axios'
+import { host } from '../../constant'
 
 interface DataType {
   _id: string;
@@ -64,7 +65,7 @@ const UserManage: React.FC = () => {
   }, [])
 
   const fetchDataList = () => {
-    axios.get('http://localhost:3001/catalog/authors')
+    axios.get(host + '/catalog/authors')
       .then(res => {
         setData(res.data)
       })
@@ -84,7 +85,7 @@ const UserManage: React.FC = () => {
   };
 
   const onFinish = (values: any) => {
-    axios.post('http://localhost:3001/catalog/author/create', values)
+    axios.post(host + '/catalog/author/create', values)
       .then(res => {
         setOpen(false);
         fetchDataList();
@@ -95,7 +96,7 @@ const UserManage: React.FC = () => {
   };
 
   const handleDelete = (id: string) => {
-    axios.get('http://localhost:3001/catalog/author/' + id + '/delete')
+    axios.get(host + '/catalog/author/' + id + '/delete')
       .then(res => {
         fetchDataList();
       })

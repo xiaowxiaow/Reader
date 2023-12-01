@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './head.css';
 import axios from 'axios'
 import { UserType } from '../../type';
+import { host } from '../../constant'
 
 const Head: React.FC = () => {
   const [userInfo, setUserInfo] = useState({} as UserType);
@@ -22,7 +23,7 @@ const Head: React.FC = () => {
 
   const handleLogin = async () => {
     if (email && password) {
-      const { data } = await axios.post('http://localhost:3001/users/login', {
+      const { data } = await axios.post(host + '/users/login', {
         email, password
       })
       setShowDialog(false)

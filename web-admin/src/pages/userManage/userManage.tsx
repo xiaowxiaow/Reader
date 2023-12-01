@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Space, Table, Modal, Form, Input, Select } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import axios from 'axios'
+import { host } from '../../constant'
 
 interface DataType {
   _id: string;
@@ -68,7 +69,7 @@ const UserManemail: React.FC = () => {
   }, [])
 
   const fetchDataList = () => {
-    axios.get('http://localhost:3001/users')
+    axios.get(host + '/users')
       .then(res => {
         setData(res.data)
       })
@@ -88,7 +89,7 @@ const UserManemail: React.FC = () => {
   };
 
   const onFinish = (values: any) => {
-    axios.post('http://localhost:3001/users/create', values)
+    axios.post(host + '/users/create', values)
       .then(res => {
         setOpen(false);
         fetchDataList();
@@ -99,7 +100,7 @@ const UserManemail: React.FC = () => {
   };
 
   const handleDelete = (id: string) => {
-    axios.get('http://localhost:3001/users/' + id + '/delete')
+    axios.get(host + '/users/' + id + '/delete')
       .then(res => {
         fetchDataList();
       })

@@ -5,6 +5,7 @@ import Head from '../../components/head/head'
 import bookCover from '../../assets/book_cover.png'
 import authorImg from '../../assets/author.png'
 import { BookType, AuthorType } from '../../type/index'
+import { host } from '../../constant'
 
 const Home: React.FC = () => {
 
@@ -16,7 +17,7 @@ const Home: React.FC = () => {
   }, [])
 
   const fetchNewBook = async (authors: AuthorType[]) => {
-    const { data } = await axios.get('http://localhost:3001/catalog/books')
+    const { data } = await axios.get(host + '/catalog/books')
 
     data.map((item: BookType) => {
       let author = authors.find(elem => elem._id === item.author)
@@ -28,7 +29,7 @@ const Home: React.FC = () => {
   }
 
   const fetchAuthor = async () => {
-    const { data } = await axios.get('http://localhost:3001/catalog/authors')
+    const { data } = await axios.get(host + '/catalog/authors')
     setAuthorList(data)
     fetchNewBook(data)
   }

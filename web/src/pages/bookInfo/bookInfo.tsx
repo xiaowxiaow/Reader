@@ -5,6 +5,7 @@ import Head from '../../components/head/head'
 import { BookType, CommentType, UserType, AuthorType } from '../../type/index'
 import bookCover from '../../assets/book_cover.png'
 import avatarImg from '../../assets/head.png'
+import { host } from '../../constant'
 
 const BookInfo = () => {
   const [book, setBook] = useState({} as BookType);
@@ -26,7 +27,7 @@ const BookInfo = () => {
   const fetchBook = async (authors: AuthorType[]) => {
     const id = window.location.hash.split('=')[1]
     const { data } = await axios.get(
-      `http://localhost:3001/catalog/book/${id}`
+      `${host}/catalog/book/${id}`
     )
     let author = authors.find(elem => elem._id === data.author)
     data.authorName = author?.first_name + " " + author?.family_name
@@ -36,13 +37,13 @@ const BookInfo = () => {
   const fetchCommentList = async () => {
     const id = window.location.hash.split('=')[1]
     const { data } = await axios.get(
-      `http://localhost:3001/catalog/comments`
+      `${host}/catalog/comments`
     )
     setCommentList(data.filter((item: CommentType) => id === item.book))
   }
 
   const fetchAuthor = async () => {
-    const { data } = await axios.get('http://localhost:3001/catalog/authors')
+    const { data } = await axios.get(host + '/catalog/authors')
     setAuthorList(data)
     fetchBook(data)
   }
@@ -52,7 +53,7 @@ const BookInfo = () => {
       return
     }
     const id = window.location.hash.split('=')[1]
-    await axios.post('http://localhost:3001/catalog/comment/create', {
+    await axios.post(host + '/catalog/comment/create', {
       book: id,
       content: text,
       score: '5',

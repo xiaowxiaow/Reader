@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Space, Table, Modal, Form, Input } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import axios from 'axios'
+import { host } from '../../constant'
 
 interface DataType {
   _id: string;
@@ -47,7 +48,7 @@ const GenreManage: React.FC = () => {
   }, [])
 
   const fetchDataList = () => {
-    axios.get('http://localhost:3001/catalog/genres')
+    axios.get(host + '/catalog/genres')
       .then(res => {
         setData(res.data)
       })
@@ -67,7 +68,7 @@ const GenreManage: React.FC = () => {
   };
 
   const onFinish = (values: any) => {
-    axios.post('http://localhost:3001/catalog/genre/create', values)
+    axios.post(host + '/catalog/genre/create', values)
       .then(res => {
         setOpen(false);
         fetchDataList();
@@ -78,7 +79,7 @@ const GenreManage: React.FC = () => {
   };
 
   const handleDelete = (id: string) => {
-    axios.get('http://localhost:3001/catalog/genre/' + id + '/delete')
+    axios.get(host + '/catalog/genre/' + id + '/delete')
       .then(res => {
         fetchDataList();
       })
